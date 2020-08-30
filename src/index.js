@@ -4,10 +4,16 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.css"
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from "redux"
-import reducer from './store/reducer';
+import { createStore, combineReducers } from "redux"
 import { Provider } from "react-redux"
-const store = createStore(reducer)
+import counterReducer from './store/reducers/counterReducer';
+import resultsReducer from './store/reducers/resultsReducer';
+
+const rootReducers = combineReducers({
+  ctr: counterReducer, res: resultsReducer
+})
+
+const store = createStore(rootReducers)
 
 ReactDOM.render(
   <React.StrictMode>

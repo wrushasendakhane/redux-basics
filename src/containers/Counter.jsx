@@ -35,7 +35,7 @@ class Counter extends Component {
         <div className="row justify-content-md-center">
           <div className="col-md-auto">
             <CounterControl
-              onClicked={this.props.onStoreResult}
+              onClicked={() => this.props.onStoreResult(this.props.ctr)}
               label="Store Result"
             />
           </div>
@@ -63,8 +63,8 @@ class Counter extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    ctr: state.counter,
-    results: state.results,
+    ctr: state.ctr.counter,
+    results: state.res.results,
   };
 };
 
@@ -75,7 +75,8 @@ const mapDispatchToProps = (dispatch) => {
     onAdditionCounter: () => dispatch({ type: actionTypes.ADD, val: 10 }),
     onSubstractionCounter: () =>
       dispatch({ type: actionTypes.SUBTRACT, val: 15 }),
-    onStoreResult: () => dispatch({ type: actionTypes.STORE_RESULT }),
+    onStoreResult: (result) =>
+      dispatch({ type: actionTypes.STORE_RESULT, result: result }),
     onDeleteResult: (id) =>
       dispatch({ type: actionTypes.DELETE_RESULT, id: id }),
   };
