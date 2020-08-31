@@ -9,7 +9,7 @@ import {
   subtract,
   storeResult,
   deleteResult,
-} from "../store/actions";
+} from "../store/actions/index";
 
 class Counter extends Component {
   render() {
